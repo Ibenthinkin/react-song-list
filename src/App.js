@@ -1,26 +1,31 @@
-import React from 'react';
-import logo from './logo.svg';
-import './App.css';
+import React, { Component } from 'react';
 
-function App() {
-  return (
-    <div className="App">
-      <header className="App-header">
-        <img src={logo} className="App-logo" alt="logo" />
-        <p>
-          Edit <code>src/App.js</code> and save to reload.
-        </p>
-        <a
-          className="App-link"
-          href="https://reactjs.org"
-          target="_blank"
-          rel="noopener noreferrer"
-        >
-          Learn React
-        </a>
-      </header>
-    </div>
-  );
+class App extends Component {
+    state = {
+        songs: [{
+            id: 1,
+            title: "Call Me Maybe"
+        },{
+            id: 2,
+            title: "For Whom The Bell Tolls"
+        }]
+    }
+    getSongs() {
+        return this.state.songs.map(song => {
+            return <li key={song.id}>
+                <div>
+                    <h2>{song.title}</h2>
+                </div>
+            </li>
+        })
+    }
+    render(){
+      return (
+        <div className="App">
+          <ul>{this.getSongs()}</ul>
+        </div>
+      );
+    }
 }
 
 export default App;
